@@ -8,7 +8,7 @@ function Picture (name, home) {
   allImages.push(this);
 };
 
-(function creatPictures() {
+(function createPictures() {
   for (var i = 0; i < imageNames.length; i++) {
     new Picture(imageNames[i], 'IMG/' + imageNames[i] + '.jpg');
   }
@@ -22,12 +22,35 @@ var imgRank = {
   midImg: null,
   rightImg: null,
 
-  leftEl: document.getElementById('imgFirst'),
-  midEl: document.getElementById('imgSecond'),
-  rightEl: document.getElementById('imgThird'),
+  leftEl: document.getElementById('img1'),
+  midEl: document.getElementById('img2'),
+  rightEl: document.getElementById('img3'),
 
   imgEls: document.getElementById('theSlidesHere'),
   resultsEls: document.getElementById('results'),
   dooverButtonEls: document.getElementById('showResults'),
   resetButtonEls: document.getElementById('reset'),
+
+  getRandomIndex: function() {
+    return Math.floor(Math.random() * allImages.length);
+  },
+
+  displayImages: function() {
+    imgRank.leftImg = allImages[imgRank.getRandomIndex()];
+    imgRank.midImg = allImages[imgRank.getRandomIndex()];
+    imgRank.rightImg = allImages[imgRank.getRandomIndex()];
+    if(this.leftImg === this.midImg || this.midImg === this.rightImg || this.leftImg === this.rightImg) {
+      imgRank.displayImages();
+    }
+    imgRank.leftEl.src = this.leftImg.path;
+    imgRank.leftEl.id = this.leftImg.name;
+
+    imgRank.midEl.src = this.midImg.path;
+    imgRank.midEl.id = this.midImg.name;
+
+    imgRank.rightEl.src = this.rightImg.path;
+    imgRank.rightEl.id = this.rightImg.name;
+  }
 };
+
+imgRank.displayImages();

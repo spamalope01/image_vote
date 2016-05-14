@@ -141,10 +141,7 @@ formEl.addEventListener('submit', function(event) {
 
 // selection of that button will populate the UL with all images and totals.  so each li will be a combo of string and variable:  'the shark picture got ' + sharkPic.numVotes.
 
-//   getRandomIndex = function() {
-//     return Math.floor(Math.random() * allImages.length);
-//   },
-//
+
 // displayImages = function() {
 // //this is where we call renderImage
 //   Picture.renderImage(obj);
