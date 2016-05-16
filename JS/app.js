@@ -27,7 +27,7 @@ var imgRank = {
   midEl: document.getElementById('img2'),
   rightEl: document.getElementById('img3'),
 
-  imgEls: document.getElementById('theSlidesHere'),
+  imgEls: document.getElementById('imagesHere'),
   resultsEls: document.getElementById('results'),
   resultButtonEls: document.getElementById('showResults'),
   resetButtonEls: document.getElementById('reset'),
@@ -44,20 +44,21 @@ var imgRank = {
       imgRank.displayImages();
     }
     imgRank.leftEl.src = this.leftImg.path;
-    imgRank.leftEl.id = this.leftImg.name;
+    imgRank.leftEl.id = this.leftImg.pictureName;
 
     imgRank.midEl.src = this.midImg.path;
-    imgRank.midEl.id = this.midImg.name;
+    imgRank.midEl.id = this.midImg.pictureName;
 
     imgRank.rightEl.src = this.rightImg.path;
-    imgRank.rightEl.id = this.rightImg.name;
+    imgRank.rightEl.id = this.rightImg.pictureName;
   },
 
   tallyClicks: function(elementId) {
     for (var i in allImages) {
-      if(allImages[i].name === elementId) {
+      if(allImages[i].pictureName === elementId) {
         allImages[i].votes += 1;
-        console.log('current votes: ' + allImages.votes);
+        imgRank.totalClicks += 1;
+        console.log(allImages[i].pictureName + ': ' + allImages[i].votes);
       }
     }
   },
@@ -66,39 +67,39 @@ var imgRank = {
     var ulEl = document.createElement('ul');
     for (var i in allImages) {
       var liEl = document.createElement('li');
-      var stg = allImages[i] + 'has ' + allImages.votes + 'votes.';
-      conclusion.textContent = stg.charAt(0).toUpperCase() + stg.slice(1);
+      var stg = allImages[i].pictureName + ' ' + 'has ' + allImages[i].votes + ' votes.';
+      liEl.textContent = stg.charAt(0).toUpperCase() + stg.slice(1);
       ulEl.appendChild(liEl);
     }
     var li2El = document.createElement('li');
-    totalSelections.textContent = 'Total User Clicks ' + imgRank.totalClicks;
+    li2El.textContent = 'Total User Clicks ' + imgRank.totalClicks;
     ulEl.appendChild(li2El);
     this.resultsEls.appendChild(ulEl);
   },
   showButton: function() {
-    this.resultButtonEls.hidden = False;
-    this.resultButtonEls.addEventListener('click', function() {
-      this.resultButtonEls.hidden = True;
-      this.resetButtonEls.hidden = False;
+    imgRank.resultButtonEls.hidden = false;
+    imgRank.resultButtonEls.addEventListener('click', function() {
+      imgRank.resultButtonEls.hidden = true;
+      imgRank.resetButtonEls.hidden = false;
       imgRank.displayResults();
     });
-    this.resetButtonEls.addEventListener('click', function(){
-      this.resetButtonEls.hidden = True;
+    imgRank.resetButtonEls.addEventListener('click', function(){
+      imgRank.resetButtonEls.hidden = true;
       location.reload();
     });
   },
   onClick: function() {
-    if (event.target.id === imgRank.leftImg.name || event.target.id === imgRank.rightImg.name || event.target.id === imgRank.midImg.name) {
+    console.log(event.target.id);
+    if(event.target.id === imgRank.leftImg.pictureName || event.target.id === imgRank.rightImg.pictureName || event.target.id === imgRank.midImg.pictureName) {
       imgRank.tallyClicks(event.target.id);
-      imgRank.displayImages();
 
       if(imgRank.totalClicks % 15 === 0) {
-        imgRank.imgEls.removeEventListener('click', imgRank.onClick());
+        imgRank.imgEls.removeEventListener('click', imgRank.onClick);
         imgRank.showButton();
       }
+      imgRank.displayImages();
     } else {
       var errorMsg = document.getElementById('missedTarget');
-      var errorContent = errorMsg.innerHTML;
       errorMsg.innerHTML = '<p>' + 'You need to click on an image.' + '</p>';
     }
   }

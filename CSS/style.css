@@ -38,5 +38,6 @@ img {
 
 #results {
   column-count: 3;
-  max-height: 250px;
+  margin-top: 40px;
+  max-height: 200px;
 }
