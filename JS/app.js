@@ -64,17 +64,22 @@ var imgRank = {
   },
 
   displayResults: function() {
-    var ulEl = document.createElement('ul');
-    for (var i in allImages) {
-      var liEl = document.createElement('li');
-      var stg = allImages[i].pictureName + ' ' + 'has ' + allImages[i].votes + ' votes.';
-      liEl.textContent = stg.charAt(0).toUpperCase() + stg.slice(1);
-      ulEl.appendChild(liEl);
-    }
-    var li2El = document.createElement('li');
-    li2El.textContent = 'Total User Clicks ' + imgRank.totalClicks;
-    ulEl.appendChild(li2El);
-    this.resultsEls.appendChild(ulEl);
+
+
+
+
+
+    // var ulEl = document.createElement('ul');
+    // for (var i in allImages) {
+    //   var liEl = document.createElement('li');
+    //   var stg = allImages[i].pictureName + ' ' + 'has ' + allImages[i].votes + ' votes.';
+    //   liEl.textContent = stg.charAt(0).toUpperCase() + stg.slice(1);
+    //   ulEl.appendChild(liEl);
+    // }
+    // var li2El = document.createElement('li');
+    // li2El.textContent = 'Total User Clicks ' + imgRank.totalClicks;
+    // ulEl.appendChild(li2El);
+    // this.resultsEls.appendChild(ulEl);
   },
   showButton: function() {
     imgRank.resultButtonEls.hidden = false;

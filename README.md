@@ -4,3 +4,5 @@
 #got all images to display, and basic styling (box shadow, background color and font family).  still having a problem with clicks not refreshing the images.  
 
 #got everything working now.  next will be replacing the UL with a chart.  
+
+#begin working on adding the chart. 
