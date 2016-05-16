@@ -1,3 +1,30 @@
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #CDCDCD;
+}
+
+main {
+  max-width: 100%;
+}
+
+#theSlidesHere {
+  text-align: center;
+}
+
 .slidePics {
   border: 1px solid black;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  margin: 20px 15px 20px 15px;
+  border: 2px solid black;
+  box-shadow: 0 0 15px #777777; 
+}
+
+#missedTarget {
+  font-size: 18px;
+  color: red;
 }

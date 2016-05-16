@@ -10,16 +10,22 @@
 
     </header>
     <main>
-      <section id="theSlidesHere">
+      <div id="theSlidesHere" class="container">
+        <h1>Select Your Favorite Image</h1>
+        <p>
+          Your votes will be tallied and results displayed at the end of voting.
+        </p>
         <section id="imagesHere">
           <img src="" alt="" id="img1" />
           <img src="" alt="" id="img2" />
           <img src="" alt="" id="img3" />
         </section>
+        <section id="missedTarget"></section>
+      </div>
       </section>
-        <section id="controls">
-          <button type="button" name="Button" id="showResults">Show Results</button>
-          <button type="button" name="reset" id="reset">Reset</button>
+        <section id="controls" class="container">
+          <button type="button" name="Button" id="showResults" hidden>Show Results</button>
+          <button type="button" name="reset" id="reset" hidden>Reset</button>
           <section id="results"></section>
         </section>
 

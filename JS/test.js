@@ -142,43 +142,6 @@ formEl.addEventListener('submit', function(event) {
 // selection of that button will populate the UL with all images and totals.  so each li will be a combo of string and variable:  'the shark picture got ' + sharkPic.numVotes.
 
 
-// displayImages = function() {
-// //this is where we call renderImage
-//   Picture.renderImage(obj);
-// //
-// //
-//   };
-// //     // TODO: Hmm... what's going to happen here?
-// //
-//   tallyClicks: function(elementId) {
-//     if (click) {
-//       picTracker.votes++
-//     }
-//     // TODO: Hmm... what's going to happen here?
-//   },
-// //
-//   displayResults: function() {
-//     // TODO: Hmm... what's going to happen here?
-//   },
-//
-//   showButton: function() {
-//      show the 'get results' button
-//     // TODO: Hmm... what's going to happen here?
-//   },
-//
-//   onClick: function() {
-//    tallyClicks(); //we have to call tally clicks, to add one to the tally.
-//       if (allImages[i] <= 15) {
-//      getRandomIndex(); //run the random generator again
-//     }
-//     else {
-//     showButton();
-//   }
-//     // TODO: Hmm... what's going to happen here?
-// };
-//
-// tallyClicks.imageEls.addEventListener('click', tallyClicks.onClick);
-// productRank.displayImages();
 
 //CHART SHITE:
 
