@@ -90,12 +90,12 @@ var imgRank = {
   onClick: function() {
     if (event.target.id === imgRank.leftImg.name || event.target.id === imgRank.rightImg.name || event.target.id === imgRank.midImg.name) {
       imgRank.tallyClicks(event.target.id);
+      imgRank.displayImages();
 
       if(imgRank.totalClicks % 15 === 0) {
         imgRank.imgEls.removeEventListener('click', imgRank.onClick());
         imgRank.showButton();
       }
-      imgRank.displayImages();
     } else {
       var errorMsg = document.getElementById('missedTarget');
       var errorContent = errorMsg.innerHTML;

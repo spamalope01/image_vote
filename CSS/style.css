@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 body {
   max-width: 960px;
   margin: 0 auto;
@@ -6,6 +8,10 @@ body {
 
 main {
   max-width: 100%;
+}
+
+.verbiage{
+  font-family: 'Montserrat', serif;
 }
 
 #theSlidesHere {
@@ -21,10 +27,16 @@ img {
   width: 200px;
   margin: 20px 15px 20px 15px;
   border: 2px solid black;
-  box-shadow: 0 0 15px #777777; 
+  box-shadow: 0 0 15px #777777;
 }
 
 #missedTarget {
+  font-family: 'Montserrat', serif;
   font-size: 18px;
   color: red;
+}
+
+#results {
+  column-count: 3;
+  max-height: 250px;
 }
