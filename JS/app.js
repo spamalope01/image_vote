@@ -1,12 +1,24 @@
 var allImages = [];
 var imageNames = ['bag', 'banana', 'boots', 'chair', 'cthulhu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water_can', 'wine_glass'
 ];
+var data = {
+  labels: imageNames,
+  datasets: [
+    {
+      data: [],
+      label: 'Your Favorite Baby Toys',
+      backgroundColor: 'rgba(77,18,255,0.5)',
+    }
+  ]
+};
+var storeClicks = '';
 
 function Picture (name, home) {
   this.pictureName = name;
   this.path = home;
   this.votes = 0;
   allImages.push(this);
+  data.datasets[0].data.push(this.votes);
 };
 
 (function createPictures() {
@@ -58,24 +70,22 @@ var imgRank = {
       if(allImages[i].pictureName === elementId) {
         allImages[i].votes += 1;
         imgRank.totalClicks += 1;
+        data.datasets[0].data[i] = allImages[i].votes;
         console.log(allImages[i].pictureName + ': ' + allImages[i].votes);
       }
+      storeClicks = JSON.stringify(data.datasets[0].data);
+      localStorage.setItem('currentClicks', storeClicks);
     }
   },
 
   displayResults: function() {
-    var ulEl = document.createElement('ul');
-    for (var i in allImages) {
-      var liEl = document.createElement('li');
-      var stg = allImages[i].pictureName + ' ' + 'has ' + allImages[i].votes + ' votes.';
-      liEl.textContent = stg.charAt(0).toUpperCase() + stg.slice(1);
-      ulEl.appendChild(liEl);
-    }
-    var li2El = document.createElement('li');
-    li2El.textContent = 'Total User Clicks ' + imgRank.totalClicks;
-    ulEl.appendChild(li2El);
-    this.resultsEls.appendChild(ulEl);
+    var ctx = document.getElementById('resultsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+    });
   },
+
   showButton: function() {
     imgRank.resultButtonEls.hidden = false;
     imgRank.resultButtonEls.addEventListener('click', function() {
@@ -107,3 +117,11 @@ var imgRank = {
 
 imgRank.imgEls.addEventListener('click', imgRank.onClick);
 imgRank.displayImages();
+
+// var monkey = localStorage.getItem('currentClicks');
+if(localStorage.currentClicks) {
+  data.datasets[0].data = JSON.parse(localStorage.getItem('currentClicks'));
+  for(var j = 0; j < allImages.length; j++) {
+    allImages[j].votes = data.datasets[0].data[j];
+  }
+};
